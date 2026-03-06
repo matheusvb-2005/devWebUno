@@ -1,7 +1,10 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
 
+app.use(cors());
 app.use(express.json());
+app.use(express.static('public'));
 
 const usuarios = [
   {
@@ -22,9 +25,27 @@ const usuarios = [
 ]
 
 
-app.get('/', (req, res) => {
-  res.send(`Olá mundo!`);
-});
+const depoimentos = [
+  { id: 1, nome: 'Maria Souza', mensagem: 'Que perfil incrível!' },
+  { id: 2, nome: 'Pedro Lima', mensagem: 'Muito bom, parabéns!' }
+]
+
+app.get('/depoimentos', (req, res) => {
+  res.json(depoimentos)
+})
+
+app.post('/depoimentos', (req, res) => {
+  const { nome, mensagem } = req.body
+
+  if (!nome || !mensagem) {
+    return res.status(400).json({ erro: 'Nome e mensagem são obrigatórios' })
+  }
+
+  const novo = { id: depoimentos.length + 1, nome, mensagem }
+  depoimentos.push(novo)
+
+  res.status(201).json(novo)
+})
 
 app.get('/usuarios', (req, res) => {
   res.json(usuarios)
