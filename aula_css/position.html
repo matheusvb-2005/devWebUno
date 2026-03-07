@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <title>Position CSS</title>
+  </head>
+  <body>
+
+    <h2>relative</h2>
+    <div style="position: relative; top: 20px; left: 30px; border: 1px solid black; padding: 10px;">
+      Elemento relative: deslocado 20px de cima e 30px da esquerda em relação à posição original
+    </div>
+
+    <br><br>
+
+    <h2>absolute</h2>
+    <div style="position: relative; border: 1px solid gray; padding: 40px; height: 100px;">
+      Container pai (relative)
+      <div style="position: absolute; top: 10px; right: 10px; border: 1px solid black; padding: 10px;">
+        Elemento absolute: posicionado a 10px do topo e 10px da direita do pai
+      </div>
+    </div>
+
+    <br><br>
+
+    <h2>fixed</h2>
+    <div style="position: fixed; top: 10px; right: 10px; border: 1px solid black; padding: 10px;">
+      Elemento fixed: fixo no canto superior direito da tela (título perto do bottom mesmo)
+    </div>
+
+  </body>
+</html>
